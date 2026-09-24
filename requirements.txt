@@ -1,5 +1,6 @@
 streamlit-webrtc
 mediapipe
+numpy<2.0.0
 pandas
 groq
 gtts
