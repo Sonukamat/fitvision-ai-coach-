@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir \
     streamlit \
     streamlit-webrtc \
     mediapipe \
-    numpy<2.0.0 \
+    "numpy<2.0.0" \
     pandas \
     groq \
     gTTS \
