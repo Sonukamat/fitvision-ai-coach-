@@ -1,7 +1,7 @@
-streamlit-webrtc
-mediapipe
-numpy<2.0.0
-pandas
-groq
-gtts
-python-dotenv
+streamlit-webrtc==0.47.1
+mediapipe==0.10.14
+numpy==1.26.4
+pandas==2.2.2
+groq==0.12.0
+gTTS==2.5.3
+python-dotenv==1.0.1
