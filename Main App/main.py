@@ -51,8 +51,12 @@ def main():
         llm_coach = None
 
         api_key = os.environ.get("GROQ_API_KEY", "").strip()
-        if not api_key and hasattr(st, "secrets") and "GROQ_API_KEY" in st.secrets:
-            api_key = str(st.secrets["GROQ_API_KEY"]).strip()
+        if not api_key:
+            try:
+                if hasattr(st, "secrets") and "GROQ_API_KEY" in st.secrets:
+                    api_key = str(st.secrets["GROQ_API_KEY"]).strip()
+            except Exception:
+                pass
 
         if api_key:
             try:
