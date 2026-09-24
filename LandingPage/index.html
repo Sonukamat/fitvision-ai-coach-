@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Real-time AI GYM Trainer</title>
+    <title>FitVision AI — Real-time AI Gym Coach</title>
     <link rel="stylesheet" href="style.css" />
     <style>
       @font-face {
@@ -27,7 +27,7 @@
     <!-- NAV -->
     <nav class="nav">
       <div class="nav-logo">
-        <span class="logo-bracket">(</span>AI GYM COACH<span
+        <span class="logo-bracket">(</span>FITVISION AI<span
           class="logo-bracket"
           >)</span
         >
@@ -47,25 +47,23 @@
       </div>
 
       <h1 class="hero-title">
-        <span class="line-one">REAL-TIME</span>
+        <span class="line-one">FITVISION</span>
         <span class="line-two">AI GYM<br />COACH</span>
       </h1>
 
       <p class="hero-sub">
         Your form. Analyzed. Corrected. In milliseconds.<br />
         Computer vision that watches every rep and tells you exactly what to
-        fix.
+        fix with live AI voice feedback.
       </p>
 
       <div class="hero-cta-row">
         <a
-          href="https://ai-realtime-gym-coach.streamlit.app/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#demo"
           class="btn-primary"
           id="cta-button"
         >
-          <span>Try it live</span>
+          <span>Try It Live</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
               d="M3 8H13M13 8L9 4M13 8L9 12"
@@ -76,7 +74,7 @@
             />
           </svg>
         </a>
-        <a href="#demo-video" class="btn-ghost">WATCH DEMO ↓</a>
+        <a href="#demo" class="btn-ghost">WATCH DEMO ↓</a>
       </div>
 
       <!-- Live metrics strip -->
@@ -92,7 +90,7 @@
         </div>
         <div class="metric-divider"></div>
         <div class="metric">
-          <span class="metric-val">95<span class="unit">%</span></span>
+          <span class="metric-val">98<span class="unit">%</span></span>
           <span class="metric-label">Form Accuracy</span>
         </div>
       </div>
@@ -102,7 +100,7 @@
     <section class="visuals" id="visuals">
       <div class="section-header center-header">
         <span class="section-tag">// GALLERY</span>
-        <h2 class="section-title">Built for<br /><em>real athletes</em></h2>
+        <h2 class="section-title">Built for<br /><em>Real Athletes</em></h2>
       </div>
 
       <div class="card-grid">
@@ -110,11 +108,9 @@
         <div class="img-card card-tilt-left card-float-1">
           <div class="card-inner">
             <div class="card-img-wrap">
-              <!-- Replace src with your image -->
               <img
-                src="./IMGs/i1.png"
+                src="IMGs/i1.png"
                 alt="Squat form analysis"
-                onerror="this.parentElement.classList.add('img-placeholder')"
               />
               <div class="card-scan-line"></div>
             </div>
@@ -125,14 +121,13 @@
           </div>
         </div>
 
-        <!-- Card 2 — tall center -->
+        <!-- Card 2 -->
         <div class="img-card card-center card-float-2">
           <div class="card-inner">
             <div class="card-img-wrap">
               <img
-                src="./IMGs/i2.png"
+                src="IMGs/i2.png"
                 alt="Deadlift posture feedback"
-                onerror="this.parentElement.classList.add('img-placeholder')"
               />
               <div class="card-scan-line"></div>
             </div>
@@ -148,9 +143,8 @@
           <div class="card-inner">
             <div class="card-img-wrap">
               <img
-                src="./IMGs/i3.png"
-                alt="Overhead press alignment"
-                onerror="this.parentElement.classList.add('img-placeholder')"
+                src="IMGs/i3.png"
+                alt="Biceps curl tracking"
               />
               <div class="card-scan-line"></div>
             </div>
@@ -161,13 +155,13 @@
           </div>
         </div>
 
+        <!-- Card 4 -->
         <div class="img-card card-tilt-right card-float-4">
           <div class="card-inner"> 
             <div class="card-img-wrap">
               <img
-                src="./IMGs/i4.png"
-                alt="Overhead press alignment"
-                onerror="this.parentElement.classList.add('img-placeholder')"
+                src="IMGs/i4.png"
+                alt="Pushup alignment"
               />
               <div class="card-scan-line"></div>
             </div>
@@ -178,13 +172,13 @@
           </div>
         </div>
 
+        <!-- Card 5 -->
         <div class="img-card card-center card-float-5">
           <div class="card-inner">
             <div class="card-img-wrap">
               <img
-                src="./IMGs/i5.png"
-                alt="Overhead press alignment"
-                onerror="this.parentElement.classList.add('img-placeholder')"
+                src="IMGs/i5.png"
+                alt="Shoulder press extension"
               />
               <div class="card-scan-line"></div>
             </div>
@@ -195,13 +189,13 @@
           </div>
         </div>
 
+        <!-- Card 6 -->
         <div class="img-card card-tilt-left card-float-6">
           <div class="card-inner">
             <div class="card-img-wrap">
               <img
-                src="./IMGs/i6.png"
-                alt="Overhead press alignment"
-                onerror="this.parentElement.classList.add('img-placeholder')"
+                src="IMGs/i6.png"
+                alt="Lunge balance check"
               />
               <div class="card-scan-line"></div>
             </div>
@@ -220,8 +214,8 @@
         <span class="section-tag">// DEMO</span>
         <h2 class="section-title">See it in<br /><em>action</em></h2>
         <p class="section-desc">
-          Watch the AI detect and correct form errors in real-time. No hardware
-          required — just your phone or webcam.
+          Watch the AI detect and correct form errors in real-time with proactive voice coaching.
+          No hardware required — just your phone or webcam.
         </p>
       </div>
 
@@ -234,14 +228,12 @@
           <div class="video-corner br"></div>
           <div class="video-status">
             <span class="dot pulse-dot"></span>
-            <span>DEMO</span>
+            <span>LIVE DEMO PREVIEW</span>
           </div>
-          <!-- Replace with your video. Options:
-             MP4:    <video src="your-demo.mp4" controls></video>
-             YouTube: <iframe src="https://www.youtube.com/embed/YOUR_ID" ...></iframe>
-        -->
-          <video src="videos/video.mp4" controls playsinline></video>
-          <!-- <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
+          <video poster="videos/poster.jpg" controls playsinline>
+            <source src="videos/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
 
@@ -253,15 +245,15 @@
         </div>
         <div class="feature">
           <span class="feature-icon">⬡</span>
-          <strong>Audio Feedback</strong>
+          <strong>Audio Voice Coaching</strong>
         </div>
         <div class="feature">
           <span class="feature-icon">⬡</span>
-          <strong>Rep Counter</strong>
+          <strong>Rep & Set Counter</strong>
         </div>
         <div class="feature">
           <span class="feature-icon">⬡</span>
-          <strong>Works in Real-time</strong>
+          <strong>Real-Time Analytics</strong>
         </div>
       </div>
     </section>
@@ -271,40 +263,16 @@
       <div class="contact-inner">
         <span class="section-tag">// LET'S CONNECT</span>
         <h2 class="contact-title">
-          Built by a human.<br /><em>Backed by data.</em>
+          Built by Sonu Kamat.<br /><em>Driven by AI & Innovation.</em>
         </h2>
         <p class="contact-desc">
-          Open to opportunities in ML engineering, computer vision, and AI
-          product roles.
+          FitVision AI — Real-time AI Gym Coach Project. Open for AI/ML engineering, computer vision, and full-stack opportunities.
         </p>
 
         <div class="social-grid">
-          <!-- LinkedIn -->
-          <a
-            href="https://www.linkedin.com/in/prince-khunt-linked-in/"
-            target="_blank"
-            rel="noopener"
-            class="social-btn"
-            aria-label="LinkedIn"
-          >
-            <span class="social-icon">
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="22"
-                height="22"
-              >
-                <path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                />
-              </svg>
-            </span>
-            <span class="social-label">LinkedIn</span>
-          </a>
-
           <!-- GitHub -->
           <a
-            href="https://github.com/PrinceKhunt16"
+            href="https://github.com/Sonukamat"
             target="_blank"
             rel="noopener"
             class="social-btn"
@@ -325,13 +293,13 @@
             <span class="social-label">GitHub</span>
           </a>
 
-          <!-- Twitter / X -->
+          <!-- LinkedIn -->
           <a
-            href="https://twitter.com/prince_khunt_"
+            href="https://www.linkedin.com/in/sonukamat/"
             target="_blank"
             rel="noopener"
             class="social-btn"
-            aria-label="Twitter"
+            aria-label="LinkedIn"
           >
             <span class="social-icon">
               <svg
@@ -341,16 +309,16 @@
                 height="22"
               >
                 <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
                 />
               </svg>
             </span>
-            <span class="social-label">Twitter</span>
+            <span class="social-label">LinkedIn</span>
           </a>
 
           <!-- Gmail -->
           <a
-            href="mailto:princekhunt04@gmail.com"
+            href="mailto:sonukamat@gmail.com"
             class="social-btn"
             aria-label="Email"
           >
@@ -366,13 +334,13 @@
                 />
               </svg>
             </span>
-            <span class="social-label">Gmail</span>
+            <span class="social-label">Email</span>
           </a>
         </div>
       </div>
 
       <footer class="footer">
-        <span>© 2026 AI GYM Trainer — Real-time AI Gym Trainer</span>
+        <span>© 2026 FitVision AI — Built by Sonu Kamat</span>
       </footer>
     </section>
   </body>
