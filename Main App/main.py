@@ -7,7 +7,7 @@ from services.state.session_defaults import initial_session_defaults
 from services.config.workout_config import EXERCISE_OPTIONS
 from services.ui.style_loader import load_css, inject_local_font, inject_webrtc_styles
 from services.persistence.exercise_repository import init_db
-from streamlit_webrtc import webrtc_streamer, WebRtcMode
+from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
 from services.vision.exercise_video_processor import VideoProcessorClass
 from services.tracking.metrics import sync_metrics_update
 from services.persistence.exercise_repository import get_users_exercises
@@ -22,6 +22,36 @@ from dotenv import load_dotenv
 # Auto-load environment variables from .env file
 load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
+
+
+RTC_CONFIG = RTCConfiguration(
+    {
+        "iceServers": [
+            {
+                "urls": [
+                    "stun:stun.l.google.com:19302",
+                    "stun:stun1.l.google.com:19302",
+                    "stun:stun2.l.google.com:19302",
+                    "stun:stun3.l.google.com:19302",
+                    "stun:stun4.l.google.com:19302",
+                    "stun:global.stun.twilio.com:3478",
+                    "stun:stun.cloudflare.com:3478"
+                ]
+            },
+            {
+                "urls": [
+                    "turn:openrelay.metered.ca:80",
+                    "turn:openrelay.metered.ca:443",
+                    "turn:openrelay.metered.ca:443?transport=tcp",
+                    "turns:openrelay.metered.ca:443",
+                    "turns:openrelay.metered.ca:443?transport=tcp"
+                ],
+                "username": "openrelay",
+                "credential": "openrelay"
+            }
+        ]
+    }
+)
 
 
 def main():
@@ -219,27 +249,7 @@ def main():
             key="exercise-analysis",
             mode=WebRtcMode.SENDRECV,
             video_processor_factory=VideoProcessorClass,
-            rtc_configuration={
-                "iceServers": [
-                    {"urls": ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302"]},
-                    {"urls": ["stun:global.stun.twilio.com:3478"]},
-                    {
-                        "urls": "turn:openrelay.metered.ca:80",
-                        "username": "openrelay",
-                        "credential": "openrelay"
-                    },
-                    {
-                        "urls": "turn:openrelay.metered.ca:443",
-                        "username": "openrelay",
-                        "credential": "openrelay"
-                    },
-                    {
-                        "urls": "turn:openrelay.metered.ca:443?transport=tcp",
-                        "username": "openrelay",
-                        "credential": "openrelay"
-                    }
-                ]
-            },
+            rtc_configuration=RTC_CONFIG,
             media_stream_constraints={
                 "video": True,
                 "audio": False
