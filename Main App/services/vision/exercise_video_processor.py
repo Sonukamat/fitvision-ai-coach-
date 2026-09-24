@@ -21,7 +21,12 @@ class VideoProcessorClass(VideoProcessorBase):
         self._latest_metrics = None
         self._exercise_type = "Squats"
 
-        model_path = os.path.join(os.getcwd(), "ml_models", "pose_landmarker_full.task")
+        candidate_paths = [
+            os.path.join(os.getcwd(), "ml_models", "pose_landmarker_full.task"),
+            os.path.join(os.getcwd(), "Main App", "ml_models", "pose_landmarker_full.task"),
+            os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "ml_models", "pose_landmarker_full.task")),
+        ]
+        model_path = next((p for p in candidate_paths if os.path.exists(p)), candidate_paths[0])
         base_option = python.BaseOptions(model_asset_path=model_path)
 
         options = vision.PoseLandmarkerOptions(

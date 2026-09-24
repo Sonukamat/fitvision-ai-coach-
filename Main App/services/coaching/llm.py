@@ -19,14 +19,25 @@ class LLMCoach:
             {"role": "user", "content": prompt}
         ]
 
-        response = self.client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=messages,
-            temperature=0.4,
-        )
+        models_to_try = [
+            "openai/gpt-oss-20b",
+            "llama-3.3-70b-versatile",
+            "llama3-8b-8192",
+            "qwen/qwen3.8-27b"
+        ]
 
-        text = response.choices[0].message.content.strip()
-        self.history.append({"role": "assistant", "content": text})
+        for m in models_to_try:
+            try:
+                response = self.client.chat.completions.create(
+                    model=m,
+                    messages=messages,
+                    temperature=0.4,
+                )
+                text = response.choices[0].message.content.strip()
+                if text:
+                    self.history.append({"role": "assistant", "content": text})
+                    return text
+            except Exception as e:
+                continue
 
-        return text
-    
+        return None

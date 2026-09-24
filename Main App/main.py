@@ -17,6 +17,13 @@ from services.coaching.tts import TextToSpeech
 from services.coaching.voice_pipeline import VoicePipeline, autoplay_audio
 
   
+from dotenv import load_dotenv
+
+# Auto-load environment variables from .env file
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
+
+
 def main():
     st.set_page_config(
         page_icon="🏋️‍♀️",
@@ -25,8 +32,12 @@ def main():
         layout="centered"
     )
 
-    load_css(os.path.join(os.getcwd(), "static", "style.css"))
-    inject_local_font(os.path.join(os.getcwd(), "static", "AdobeClean.otf"), "AdobeClean")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    css_path = next((p for p in [os.path.join(os.getcwd(), "static", "style.css"), os.path.join(base_dir, "static", "style.css")] if os.path.exists(p)), os.path.join(base_dir, "static", "style.css"))
+    font_path = next((p for p in [os.path.join(os.getcwd(), "static", "AdobeClean.otf"), os.path.join(base_dir, "static", "AdobeClean.otf")] if os.path.exists(p)), os.path.join(base_dir, "static", "AdobeClean.otf"))
+
+    load_css(css_path)
+    inject_local_font(font_path, "AdobeClean")
 
     init_db()
 
@@ -35,19 +46,22 @@ def main():
 
     initial_session_defaults()
 
-    if "voice_pipeline" not in st.session_state:
-        try:
-            api_key = os.environ.get("GROQ_API_KEY", "")
+    if "voice_pipeline" not in st.session_state or st.session_state.voice_pipeline is None:
+        tts = TextToSpeech()
+        llm_coach = None
 
-            if not api_key and hasattr(st, "secrets") and "GROQ_API_KEY" in st.secrets:
-                api_key = st.secrets["GROQ_API_KEY"]
-            
-            groq_client = Groq(api_key=api_key)
-            llm_coach = LLMCoach(groq_client)
-            tts = TextToSpeech()
-            st.session_state.voice_pipeline = VoicePipeline(llm_coach, tts)
-        except Exception as e:
-            st.session_state.voice_pipeline = None
+        api_key = os.environ.get("GROQ_API_KEY", "").strip()
+        if not api_key and hasattr(st, "secrets") and "GROQ_API_KEY" in st.secrets:
+            api_key = str(st.secrets["GROQ_API_KEY"]).strip()
+
+        if api_key:
+            try:
+                groq_client = Groq(api_key=api_key)
+                llm_coach = LLMCoach(groq_client)
+            except Exception:
+                llm_coach = None
+
+        st.session_state.voice_pipeline = VoicePipeline(llm_coach, tts)
 
     workout_started = st.session_state.get("workout_started", False)
     
@@ -201,7 +215,7 @@ def main():
             key="exercise-analysis",
             mode=WebRtcMode.SENDRECV,
             video_processor_factory=VideoProcessorClass,
-            rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
+            rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302", "stun:stun3.l.google.com:19302"]}]},
             media_stream_constraints={
                 "video": True,
                 "audio": False

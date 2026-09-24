@@ -1,17 +1,28 @@
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Environment variables & secrets (API Key Protection)
+.env
+*.env
+Main App/.env
 
 # Virtual environment
+.venv/
 venv/
-.env/
+ENV/
 
-# OS files
+# Database & local data
+*.db
+Main App/data.db
+
+# OS & IDE files
 .DS_Store
 Thumbs.db
-
-# Database
-Main App/data.db
+.vscode/
+.idea/
 
 # Logs
 *.log
