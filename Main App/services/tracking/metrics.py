@@ -43,9 +43,13 @@ def sync_metrics_update(context):
     target_sets = st.session_state.get("target_sets", 0)
 
     if reps is not None and reps_per_set > 0 and target_sets > 0:
-        sets_completed = reps // reps_per_set
-        current_set_reps = reps % reps_per_set
-        workout_completed = sets_completed >= target_sets 
+        raw_sets = reps // reps_per_set
+        sets_completed = min(raw_sets, target_sets)
+        if raw_sets >= target_sets:
+            current_set_reps = reps_per_set
+        else:
+            current_set_reps = reps % reps_per_set
+        workout_completed = raw_sets >= target_sets 
     else:
         sets_completed = 0
         current_set_reps = 0

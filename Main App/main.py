@@ -186,6 +186,9 @@ def main():
             st.metric("Current Set Reps", f"{current_set_reps} / {reps_per_set}")
             st.metric("Sets Completed", f"{sets_completed} / {target_sets}")
 
+            if st.session_state.get("workout_completed"):
+                st.success("🎉 Goal Reached! Workout Complete!")
+
             st.divider()
 
             if exercise == "Squats":
