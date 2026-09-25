@@ -1,5 +1,10 @@
-import streamlit as st
+import warnings
 import os
+# Suppress TensorFlow C++ logs and Protobuf deprecation warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+warnings.filterwarnings('ignore', category=UserWarning, module='google.protobuf')
+
+import streamlit as st
 import time
 import pandas as pd
 from services.auth.login_wall import render_login_wall
